@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Music</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>Juan Music</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="loadSection('library')">Library</a></li>
+                    <li><a href="#" onclick="loadSection('playlists')">Playlists</a></li>
+                </ul>
+            </nav>
+            <button id="login-button">Login with Spotify</button>
+        </aside>
+        <main class="main-content">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search tracks or playlists" aria-label="Search">
+                <button onclick="searchTracks()">Search</button>
+            </div>
+            <div id="content" class="content">
+                <h2>Library</h2>
+                <div id="track-list"></div>
+            </div>
+        </main>
+        <footer class="player">
+            <div class="track-info">
+                <span id="current-track">No track playing</span>
+            </div>
+            <div class="controls">
+                <button onclick="playPrevious()">⏮</button>
+                <button id="play-pause" onclick="togglePlay()">▶️</button>
+                <button onclick="playNext()">⏭</button>
+            </div>
+            <div class="progress">
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+            </div>
+        </footer>
+    </div>
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
