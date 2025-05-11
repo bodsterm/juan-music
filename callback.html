@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Music - Callback</title>
+</head>
+<body>
+    <p>Authenticating...</p>
+    <script>
+        const hash = window.location.hash
+            .substring(1)
+            .split('&')
+            .reduce((initial, item) => {
+                if (item) {
+                    const parts = item.split('=');
+                    initial[parts[0]] = decodeURIComponent(parts[1]);
+                }
+                return initial;
+            }, {});
+        window.opener.postMessage({ type: 'SPOTIFY_AUTH', accessToken: hash.access_token }, '*');
+        window.close();
+    </script>
+</body>
+</html>
